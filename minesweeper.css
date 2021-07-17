@@ -1,6 +1,11 @@
 html, body {
   height: 100%;
-  font-family: 'Open Sans', sans-serif
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow: hidden;
+  background: rgb(255, 255, 255);
 }
 
 body {
@@ -17,6 +22,9 @@ body {
 }
 
 #message {
+  font-size: 1.8rem;
+}
+.numBombs{
   font-size: 1.5rem;
 }
 
@@ -57,4 +65,22 @@ div.hidden:hover {
 
 div.marked, div.marked:hover {
   background: no-repeat center/60% url("images/mark.svg") deepskyblue;
+}
+button {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 40px 2px;
+  cursor: pointer;
+  background-color: #4CAF50;
+}
+#numBombs {
+  position:;
+  left: 38%;
+  top: -390px;
+  font-size: 20px;
 }

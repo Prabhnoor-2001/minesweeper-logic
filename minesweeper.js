@@ -1,24 +1,44 @@
 document.addEventListener('DOMContentLoaded', startGame)
 
+
+function board(){
+  cells = []
+
+    for(let i =0;i<6;i++){
+      for (let j=0;j<6;j++){
+
+        cells.push({row: i, col: j, isMine: Math.random() < 0.2, hidden:true,isMarked:false})
+      }
+    }
+  return {cells};
+}
+var board = board();
 // Define your `board` object here!
-var board = {cells: [{row: 0, col:0, isMine: false,hidden:true,isMarked:false}, 
-                      {row: 0, col:1, isMine: false,hidden:true,isMarked:false},
-                       {row: 1, col:0, isMine: false,hidden:true,isMarked:false },
-                      {row: 1, col:1, isMine:true,hidden:true,isMarked:false},
-                      {row: 0, col:2, isMine: false,hidden:true,isMarked:false}, 
-                      {row: 1, col:2, isMine: false,hidden:true,isMarked:false},
-                       {row: 2, col:0, isMine: false,hidden:true,isMarked:false },
-                      {row: 2, col:1, isMine:false,hidden:true ,isMarked:false},
-                      {row: 2, col:2, isMine:true,hidden:true,isMarked:false }]}
+
 
 function startGame () {
   // Don't remove this function call: it makes the game work!
   for(let i= 0; i<board.cells.length;i++){
      board.cells[i].surroundingMines = countSurroundingMines(board.cells[i]);
   }
+  displayBombs();
   lib.initBoard()
   document.addEventListener("click",checkForWin,false);
   document.addEventListener("contextmenu",checkForWin,false);
+  document.addEventListener("click", displayBombs,false);
+}
+function numberOfBombs(){
+  number = 0
+  for(let i= 0; i<board.cells.length;i++){
+      if(board.cells[i].isMine){number++}
+  }
+  return number;
+}
+function displayBombs(){
+  let count= numberOfBombs();
+  console.log(count);
+  document.getElementById("numBombs").innerHTML = `number of bombarinos: ${count}`
+  
 }
 
 // Define this function to look for a win condition:
